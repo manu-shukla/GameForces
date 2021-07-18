@@ -51,8 +51,10 @@ function fetchData(events) {
       })
       .catch((error) => {
         console.error(error);
-        alert("Error :( The server did not respond. Click OK to reload.");
-        window.location.reload();
+        if (i == events.length - 1) {
+          alert("Error :( The server did not respond. Click OK to reload.");
+          window.location.reload();
+        }
       });
   }
 }
@@ -113,8 +115,6 @@ function fetchMyOrders() {
   myOrders.on("value", (snapshot) => {
     const data = snapshot.val();
     viewOrders(snapshot.val());
-
-    
   });
 }
 fetchMyOrders();
@@ -132,7 +132,6 @@ function viewOrders(myorders) {
   const entries = Object.entries(myorders);
 
   for (let i = 0; i < entries.length; ++i) {
-
     let row = document.createElement("tr");
     let orderid = document.createElement("td");
     let orderdate = document.createElement("td");
