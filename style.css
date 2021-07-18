@@ -1,0 +1,105 @@
+#heading {
+  z-index: 2;
+}
+#heading h1 {
+  font-size: 8vw;
+  color: white;
+  text-align: center;
+}
+nav li{
+transition: 0.3s ease-in-out;
+}
+nav li:hover{
+   transform: scale(1.2);
+    
+}
+
+.carousel .carousel-item {
+  max-height: 550px;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  max-height: 550px;
+}
+.played {
+  text-align: center;
+  margin: 30px;
+  font-size: 54px;
+  font-weight: bold;
+}
+
+.subsection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card{
+    transition: 0.5s ease-in-out;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+
+.whowe{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+}
+.icons i{
+    margin: 2px 5px;
+}
+.whowe img{
+    margin-top: 30px;
+   border-radius: 50%;
+}
+
+.sectionlogin
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 100px;
+}
+.sectionlogin button{
+    margin-top: 30px;
+    padding: 15px 20px;
+    color: white;
+    background-color: black;
+    font-size: 32px;
+    font-weight: bold;
+    border: 6px solid red;
+    transition: 0.4s ease-in-out;
+}
+.sectionlogin button:hover{
+    background-color: red   ;
+    color: black;
+    border: 6px solid black;
+    transform: scale(1.18);
+}
+
+
+
+
+
+
+
+
+
+#foot{
+    text-align: center;
+    padding:  30px;
+    color: white;
+    font-size: 18px;
+
+}

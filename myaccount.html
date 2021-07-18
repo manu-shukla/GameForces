@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="accountstyle.css" />
+
+    <title>My Account: Ashirwad Games</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 fs-4">
+      <div class="container-fluid">
+        <a class="navbar-brand fs-3" href="#">Ashirwad Games</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-3 ml-auto">
+            <li class="nav-item px-3">
+              <a class="nav-link active" aria-current="page" href="./index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link" href="#">Our Games</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link" href="./contact.html">Contact Us</a>
+            </li>
+          </ul>
+
+          <button
+            type="button"
+            id="navbtn"
+            class="btn loginbtn btn-outline-success py-2"
+            onclick="authy()"
+          >
+            Login Now
+          </button>
+         
+        </div>
+      </div>
+    </nav>
+    <div class="loader" id="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="intro">
+      <h1 id="welcomehead"></h1>
+      <button type="button" class="btn btn-danger px-4 py-2 fs-4 fw-bold" onclick="logout()">
+        Logout
+      </button>
+    </div>
+
+    <div class="games">
+      <div class="card" style="width: 22rem">
+        <img src="codm.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h4 class="card-title">Call Of Duty: Mobile</h4>
+          <h6>Starts at:</h6>
+          <h3 class="timing" id="codmTiming"></h3>
+
+          <p class="card-text" id="codmDes">Description Not Available</p>
+          <a href="./registration.html?eventname=codm" class="btn btn-primary" id="codmRegister">Register Now</a>
+        </div>
+      </div>
+      <div class="card" style="width: 22rem">
+        <img src="freefire.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h4 class="card-title">Free Fire</h4>
+          <h6>Starts at:</h6>
+          <h3 class="timing" id="freefireTiming"></h3>
+          <p class="card-text" id="freefireDes">Description Not Available</p>
+          <a href="./registration.html?eventname=freefire" class="btn btn-primary" id="freefireRegister"
+            >Register Now</a
+          >
+        </div>
+      </div>
+      <div class="card" style="width: 22rem">
+        <img src="pubg.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h4 class="card-title">PUBG Mobile</h4>
+          <h6>Starts at:</h6>
+          <h3 class="timing" id="pubgTiming"></h3>
+          <p class="card-text" id="pubgDes">Description Not Available</p>
+          <a href="./registration.html?eventname=pubg" class="btn btn-primary" id="pubgRegister">Register Now</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="orders table-responsive">
+      <h1>My Orders</h1>
+      <table id="orderhistory" class="table-primary">
+ 
+
+
+</table>
+
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-dark" id="foot">
+      <div class="container-fluid">
+        <span>All Rights Reserved &copy; 2021-22</span>
+      </div>
+    </footer>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDirPko9bEyDdRNvFL3KviYBX35akyPaCs",
+        authDomain: "gamingportal-ccd0c.firebaseapp.com",
+        projectId: "gamingportal-ccd0c",
+        storageBucket: "gamingportal-ccd0c.appspot.com",
+        messagingSenderId: "198145608033",
+        appId: "1:198145608033:web:74dbfe4b8aee816b609d20",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="account.js"></script>
+  </body>
+</html>
