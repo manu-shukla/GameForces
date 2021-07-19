@@ -40,7 +40,11 @@ function fetchData(events) {
             button.innerText = "Already Registered";
             button.style.backgroundColor = "grey";
             button.href = "#";
-            console.log("True");
+            let modalButton = document.getElementById(`${eventName}modal`);
+            modalButton.style.display = "";
+            modalButton.onclick = function fun() {
+              toggleModal(`${eventName}`);
+            };
           }
           if (i == events.length - 1) {
             document.getElementById("loader").style.display = "none";
@@ -175,4 +179,39 @@ function viewOrders(myorders) {
 
     ordertable.appendChild(row);
   }
+}
+
+function toggleModal(eventName) {
+  if (
+    document.getElementById(`${eventName}Register`).innerText !=
+    "Already Registered"
+  ) {
+    return;
+  }
+  let modalBody = document.getElementById("modalBody");
+  modalBody.innerHTML = "";
+  const dbRef = firebase.database().ref();
+  dbRef
+    .child("event")
+    .child(`${eventName}/joining`)
+    .get()
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        let roomid = document.createElement("h4");
+        let roompass = document.createElement("h4");
+        roomid.innerText = `Room ID: ${snapshot.val().roomid}`;
+        roompass.innerText = `Room Password: ${snapshot.val().roompass}`;
+        modalBody.appendChild(roomid);
+        modalBody.appendChild(roompass);
+
+        let myModal = new bootstrap.Modal(document.getElementById("myModal"));
+        myModal.toggle();
+      } else {
+        console.log("No data available");
+        alert("Unable To Fetch Joining Details. Please Try Again Later!");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }

@@ -36,6 +36,9 @@ body {
 }
 table {
   color: white;
+  overflow-y:scroll;
+  height: 24rem;
+  display:block;
 }
 table th {
   color: white;
@@ -50,6 +53,13 @@ table td {
   font-size: 14px;
   font-weight: bold;
 }
+
+
+.modalBtn{
+  margin: 5px 0px;
+}
+
+
 
 /* Loader */
 * {
@@ -108,3 +118,5 @@ table td {
 }
 
 /* Loader Code Ends */
+
+

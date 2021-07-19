@@ -78,7 +78,7 @@
         style="text-align: center; border: 2px solid black"
       ></h1>
       <h1 id="eventFee" style="text-align: center; color: green"></h1>
-      <form id="contact">
+      <form id="contact" onsubmit="register(); return false;">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label"
             >Your Name</label
@@ -123,6 +123,10 @@
           >
           <input type="file" class="form-control" id="uploaded" />
         </div>
+        <div id="spinner">
+          <h6>Uploading. Please Wait!</h6>
+          <div class="spinner-border text-info" role="status"></div>
+        </div>
         <div class="progress">
           <div
             class="progress-bar"
@@ -137,8 +141,7 @@
           </div>
         </div>
         <button
-          type="button"
-          onclick="register()"
+          type="submit"
           id="registerbtn"
           class="btn btn-info"
           style="margin: 20px"

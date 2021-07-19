@@ -6,6 +6,8 @@ if (!localStorage.getItem("uid")) {
   button.innerText = "My Account";
   button.onclick = () => window.open("./myaccount.html", "_self");
 }
+let spinner = document.getElementById("spinner");
+spinner.style.display = "none";
 
 let url_string = document.location.toString();
 let url = new URL(url_string);
@@ -41,7 +43,7 @@ let fileButton = document.getElementById("uploaded");
 let timestamp = Date.now();
 fileButton.addEventListener("change", (e) => {
   let file = e.target.files[0];
-
+  spinner.style.display = "";
   let storageRef = firebase
     .storage()
     .ref("receipts/" + localStorage.getItem("uid") + "/" + timestamp);
@@ -61,7 +63,9 @@ fileButton.addEventListener("change", (e) => {
 
     function errors(err) {},
 
-    function complete() {}
+    function complete() {
+      spinner.style.display = "none";
+    }
   );
 });
 function register() {

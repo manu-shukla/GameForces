@@ -62,7 +62,6 @@
           >
             Login Now
           </button>
-         
         </div>
       </div>
     </nav>
@@ -74,7 +73,11 @@
     </div>
     <div class="intro">
       <h1 id="welcomehead"></h1>
-      <button type="button" class="btn btn-danger px-4 py-2 fs-4 fw-bold" onclick="logout()">
+      <button
+        type="button"
+        class="btn btn-danger px-4 py-2 fs-4 fw-bold"
+        onclick="logout()"
+      >
         Logout
       </button>
     </div>
@@ -88,7 +91,15 @@
           <h3 class="timing" id="codmTiming"></h3>
 
           <p class="card-text" id="codmDes">Description Not Available</p>
-          <a href="./registration.html?eventname=codm" class="btn btn-primary" id="codmRegister">Register Now</a>
+          <a
+            href="./registration.html?eventname=codm"
+            class="btn btn-primary"
+            id="codmRegister"
+            >Register Now</a
+          >
+          <button class="btn btn-success modalBtn" id="codmmodal" style="display: none">
+            Get Joining Details
+          </button>
         </div>
       </div>
       <div class="card" style="width: 22rem">
@@ -98,9 +109,19 @@
           <h6>Starts at:</h6>
           <h3 class="timing" id="freefireTiming"></h3>
           <p class="card-text" id="freefireDes">Description Not Available</p>
-          <a href="./registration.html?eventname=freefire" class="btn btn-primary" id="freefireRegister"
+          <a
+            href="./registration.html?eventname=freefire"
+            class="btn btn-primary"
+            id="freefireRegister"
             >Register Now</a
           >
+          <button
+            class="btn btn-success modalBtn"
+            id="freefiremodal"
+            style="display: none"
+          >
+            Get Joining Details
+          </button>
         </div>
       </div>
       <div class="card" style="width: 22rem">
@@ -110,7 +131,15 @@
           <h6>Starts at:</h6>
           <h3 class="timing" id="pubgTiming"></h3>
           <p class="card-text" id="pubgDes">Description Not Available</p>
-          <a href="./registration.html?eventname=pubg" class="btn btn-primary" id="pubgRegister">Register Now</a>
+          <a
+            href="./registration.html?eventname=pubg"
+            class="btn btn-primary"
+            id="pubgRegister"
+            >Register Now</a
+          >
+          <button class="btn btn-success modalBtn" id="pubgmodal" style="display: none">
+            Get Joining Details
+          </button>
         </div>
       </div>
     </div>
@@ -118,11 +147,41 @@
     <div class="orders table-responsive">
       <h1>My Orders</h1>
       <table id="orderhistory" class="table-primary">
- 
+        <!-- Modal Code Begins -->
+        <div
+          class="modal fade"
+          id="myModal"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="staticBackdropLabel" style="color: black;">
+                 Joining Details
+                </h4>
+              
+              </div>
+              <div class="modal-body" id="modalBody" style="color: black;"></div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+               
+              </div>
+            </div>
+          </div>
+        </div>
 
-
-</table>
-
+        <!-- Modal code ends -->
+      </table>
     </div>
 
     <footer class="footer mt-auto py-3 bg-dark" id="foot">
