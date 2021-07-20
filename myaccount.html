@@ -97,7 +97,11 @@
             id="codmRegister"
             >Register Now</a
           >
-          <button class="btn btn-success modalBtn" id="codmmodal" style="display: none">
+          <button
+            class="btn btn-success modalBtn"
+            id="codmmodal"
+            style="display: none"
+          >
             Get Joining Details
           </button>
         </div>
@@ -137,7 +141,11 @@
             id="pubgRegister"
             >Register Now</a
           >
-          <button class="btn btn-success modalBtn" id="pubgmodal" style="display: none">
+          <button
+            class="btn btn-success modalBtn"
+            id="pubgmodal"
+            style="display: none"
+          >
             Get Joining Details
           </button>
         </div>
@@ -146,44 +154,43 @@
 
     <div class="orders table-responsive">
       <h1>My Orders</h1>
-      <table id="orderhistory" class="table-primary">
-        <!-- Modal Code Begins -->
-        <div
-          class="modal fade"
-          id="myModal"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="staticBackdropLabel" style="color: black;">
-                 Joining Details
-                </h4>
-              
-              </div>
-              <div class="modal-body" id="modalBody" style="color: black;"></div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button>
-               
-              </div>
-            </div>
+      <table id="orderhistory" class="table-primary"></table>
+    </div>
+    <!-- Modal Code Begins -->
+    <div
+      class="modal fade"
+      id="myModal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4
+              class="modal-title"
+              id="staticBackdropLabel"
+              style="color: black"
+            >
+              Joining Details
+            </h4>
+          </div>
+          <div class="modal-body" id="modalBody" style="color: black"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
-
-        <!-- Modal code ends -->
-      </table>
+      </div>
     </div>
-
+    <!-- Modal code ends -->
     <footer class="footer mt-auto py-3 bg-dark" id="foot">
       <div class="container-fluid">
         <span>All Rights Reserved &copy; 2021-22</span>
