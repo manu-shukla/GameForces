@@ -1,10 +1,12 @@
 if (localStorage.getItem("uid")) {
   let buttons = document.getElementsByClassName("loginbtn");
 
-  for (let i = 0; i < buttons.length; ++i) {
-    buttons[i].innerText = "My Account";
-    buttons[i].onclick = () => window.open("./myaccount.html", "_self");
-  }
+ 
+    buttons[0].innerText = "My Account";
+    buttons[0].onclick = () => window.open("./myaccount.html", "_self");
+    buttons[1].innerText = "Play Now!";
+    buttons[1].onclick = () => window.open("./myaccount.html", "_self");
+  
 }
 
 function authy() {
@@ -36,10 +38,12 @@ function authy() {
 
       let buttons = document.getElementsByClassName("loginbtn");
 
-      for (let i = 0; i < buttons.length; ++i) {
-        buttons[i].innerText = "My Account";
-        buttons[i].onclick = () => window.open("./myaccount.html", "_self");
-      }
+   
+      buttons[0].innerText = "My Account";
+      buttons[0].onclick = () => window.open("./myaccount.html", "_self");
+      buttons[1].innerText = "Play Now!";
+      buttons[1].onclick = () => window.open("./myaccount.html", "_self");
+      
 
       // ...
     })

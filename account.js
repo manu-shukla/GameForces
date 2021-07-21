@@ -31,11 +31,14 @@ function fetchData(events) {
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setCountdown(snapshot.val().timing, eventName);
+          let eventEnded = setCountdown(snapshot.val().timing, eventName);
           setDescription(snapshot.val().description, eventName);
           let registeredUsers = snapshot.val().participants;
 
-          if (registeredUsers.includes(localStorage.getItem("uid"))) {
+          if (
+            registeredUsers.includes(localStorage.getItem("uid")) &&
+            eventEnded == false
+          ) {
             let button = document.getElementById(`${eventName}Register`);
             button.innerText = "Already Registered";
             button.style.backgroundColor = "grey";
@@ -84,9 +87,17 @@ function setCountdown(eventTiming, eventName) {
     if (distance < 0) {
       clearInterval(x);
       document.getElementById(`${eventName}Timing`).innerHTML = "Event Ended";
-      document.getElementById(`${eventName}Register`).style.backgroundColor =
-        "grey";
-      document.getElementById(`${eventName}Register`).href = "#";
+
+      document.getElementById(
+        `${eventName}Register`
+      ).href = `./winners.html?eventname=${eventName}`;
+      document.getElementById(`${eventName}Register`).innerText =
+        "Winners/Claim Prize";
+      document.getElementById(`${eventName}Register`).className =
+        "btn btn-info";
+      return true;
+    } else {
+      return false;
     }
   }, 1000);
 }
@@ -94,7 +105,7 @@ function setDescription(description, eventName) {
   document.getElementById(`${eventName}Des`).innerHTML = description;
 }
 
-fetchData(["codm", "pubg", "freefire"]);
+window.onload = fetchData(["codm", "pubg", "freefire"]);
 function fetchMyOrders() {
   // const dbRef = firebase.database().ref();
   // dbRef
@@ -121,7 +132,7 @@ function fetchMyOrders() {
     viewOrders(snapshot.val());
   });
 }
-fetchMyOrders();
+window.onload = fetchMyOrders();
 
 function viewOrders(myorders) {
   let ordertable = document.getElementById("orderhistory");

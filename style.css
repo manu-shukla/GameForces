@@ -2,8 +2,15 @@
   z-index: 2;
 }
 #heading h1 {
-  font-size: 8vw;
+  font-size: 4vw;
   color: white;
+  font-weight: bold;
+  text-align: center;
+}
+#heading p {
+  font-size: 2vw;
+  color: white;
+  font-weight: bold;
   text-align: center;
 }
 nav li {

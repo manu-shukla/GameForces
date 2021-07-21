@@ -17,9 +17,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="tournaments.css" />
 
-    <title>Contact Us: Ashirwad Games</title>
+    <title>My Account: Ashirwad Games</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 fs-4">
@@ -44,15 +44,18 @@
               >
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link" href="./tournaments.html">Tournaments</a>
+              <a class="nav-link active" href="./tournaments.html"
+                >Tournaments</a
+              >
             </li>
             <li class="nav-item px-3">
               <a class="nav-link" href="#">About Us</a>
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link active" href="#">Contact Us</a>
+              <a class="nav-link" href="./contact.html">Contact Us</a>
             </li>
           </ul>
+
           <button
             type="button"
             id="navbtn"
@@ -64,74 +67,52 @@
         </div>
       </div>
     </nav>
-    <form id="contact" onsubmit="submitForm(); return false">
-      <h1 style="text-align: center">Contact Us</h1>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Your Name</label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          placeholder="Name"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Email address</label
-        >
-        <input
-          type="email"
-          class="form-control"
-          id="useremail"
-          placeholder="name@example.com"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
-          >Your Reason to Contact Us</label
-        >
-        <textarea
-          class="form-control"
-          id="message"
-          rows="3"
-          required
-        ></textarea>
-      </div>
-      <button type="submit" class="btn btn-info">Submit</button>
-    </form>
-
-    <!-- Toast CodeBase -->
-
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-      <div
-        id="mytoast"
-        class="toast hide"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <i class="fas fa-check-double fa-1x" style="color: green"></i>
-          <strong class="me-auto">Form Submitted Successfully</strong>
-
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body">
-          Thank You for contacting us. We will respond to your queries soon.
-        </div>
+    <div class="loader" id="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="intro">
+      <h1 id="heading" class="border border-danger border-5 rounded-pill">
+        Ongoing Tournaments
+      </h1>
+      <div class="alert alert-info fs-3" role="alert">
+        To Register for any of the events, login first and then go to My
+        Account.
       </div>
     </div>
 
-    <!-- Toast -->
+    <div class="games">
+      <div class="card" style="width: 22rem">
+        <img src="codm.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h4 class="card-title">Call Of Duty: Mobile</h4>
+          <h6>Starts at:</h6>
+          <h3 class="timing" id="codmTiming"></h3>
+
+          <p class="card-text" id="codmDes">Description Not Available</p>
+        </div>
+      </div>
+      <div class="card" style="width: 22rem">
+        <img src="freefire.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h4 class="card-title">Free Fire</h4>
+          <h6>Starts at:</h6>
+          <h3 class="timing" id="freefireTiming"></h3>
+          <p class="card-text" id="freefireDes">Description Not Available</p>
+        </div>
+      </div>
+      <div class="card" style="width: 22rem">
+        <img src="pubg.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h4 class="card-title">PUBG Mobile</h4>
+          <h6>Starts at:</h6>
+          <h3 class="timing" id="pubgTiming"></h3>
+          <p class="card-text" id="pubgDes">Description Not Available</p>
+        </div>
+      </div>
+    </div>
 
     <footer class="footer mt-auto py-3 bg-dark" id="foot">
       <div class="container-fluid">
@@ -144,7 +125,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
-       https://firebase.google.com/docs/web/setup#available-libraries -->
+         https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script>
       // Your web app's Firebase configuration
@@ -164,7 +145,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="contact.js"></script>
+    <script src="tournaments.js"></script>
     <script src="auth.js"></script>
   </body>
 </html>
