@@ -1,12 +1,7 @@
 *{
   font-family: 'Otomanopee One', sans-serif;
 }
-body{
-    background: rgb(222,13,161);
-    background: linear-gradient(90deg, rgba(222,13,161,1) 2%, rgba(100,87,241,1) 52%, rgba(250,58,116,1) 92%);
-  
 
-}
 #heading {
   z-index: 2;
 }
