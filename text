@@ -1,24 +1,8 @@
- let container = document.getElementById("winnerbody");
-      for (let [index, winner] of snapshot.val().entries()) {
-          console.log(winner)
-        let winnerDetail = document.createElement("tr");
-        let rank = document.createElement("td");
-        let name = document.createElement("td");
-        let gameHandle = document.createElement("td");
-        let eventname = document.createElement("td");
-        let kills = document.createElement("td");
-
-        rank.innerText = index + 1;
-        name.innerText = winner.name;
-        gameHandle.innerText = winner.gamehandle;
-        eventname.innerText = winner.eventname;
-        kills.innerText = winner.kills;
-
-        winnerDetail.appendChild(rank);
-        winnerDetail.appendChild(name);
-        winnerDetail.appendChild(gameHandle);
-        winnerDetail.appendChild(eventname);
-        winnerDetail.appendChild(kills);
-        container.appendChild(winnerDetail);
-        setTimeout(hideLoader, 3000);
-        winnerDetail;
+   <div
+        id="heading"
+        class="position-absolute top-50 start-50 translate-middle"
+      >
+        <h1>INDIA’S LARGEST E-SPORTS COMMUNITY</h1>
+        <br />
+        <p>Participate in tournaments and win Exciting Prizes!!</p>
+      </div>

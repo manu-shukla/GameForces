@@ -58,6 +58,9 @@ table td {
 .modalBtn{
   margin: 5px 0px;
 }
+.card:hover {
+  transform: scale(1.1);
+}
 
 
 
