@@ -36,14 +36,30 @@ function fetchData(events) {
           if (eventStatus(snapshot.val().timing, eventName)) {
             eventEnded = true;
           } else {
-          
             eventEnded = false;
           }
           setDescription(snapshot.val().description, eventName);
           let registeredUsers = snapshot.val().participants;
-        
 
           if (
+            registeredUsers.length == 102 &&
+            eventEnded == false &&
+            eventName != "freefire"
+          ) {
+            let button = document.getElementById(`${eventName}Register`);
+            button.innerText = "Sorry Room Capacity Exceeded!";
+            button.style.backgroundColor = "grey";
+            button.href = "#";
+          } else if (
+            registeredUsers.length == 52 &&
+            eventEnded == false &&
+            eventName == "freefire"
+          ) {
+            let button = document.getElementById(`${eventName}Register`);
+            button.innerText = "Sorry Room Capacity Exceeded!";
+            button.style.backgroundColor = "grey";
+            button.href = "#";
+          } else if (
             registeredUsers.includes(localStorage.getItem("uid")) &&
             eventEnded == false
           ) {
@@ -51,6 +67,17 @@ function fetchData(events) {
             button.innerText = "Already Registered";
             button.style.backgroundColor = "grey";
             button.href = "#";
+            if (eventName != "freefire") {
+              let count = document.getElementById(`${eventName}users`);
+              count.innerText = `${
+                registeredUsers.length - 2
+              }/100 Users Joined`;
+              count.style.fontWeight = "bold";
+            } else {
+              let count = document.getElementById(`${eventName}users`);
+              count.innerText = `${registeredUsers.length - 2}/50 Users Joined`;
+              count.style.fontWeight = "bold";
+            }
             let modalButton = document.getElementById(`${eventName}modal`);
             modalButton.style.display = "";
             modalButton.onclick = function fun() {
@@ -243,8 +270,6 @@ function eventStatus(eventTiming, eventName) {
   let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
- 
 
   if (distance < 0) {
     return true;
