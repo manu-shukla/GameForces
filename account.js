@@ -31,9 +31,17 @@ function fetchData(events) {
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
-          let eventEnded = setCountdown(snapshot.val().timing, eventName);
+          let eventEnded;
+          setCountdown(snapshot.val().timing, eventName);
+          if (eventStatus(snapshot.val().timing, eventName)) {
+            eventEnded = true;
+          } else {
+          
+            eventEnded = false;
+          }
           setDescription(snapshot.val().description, eventName);
           let registeredUsers = snapshot.val().participants;
+        
 
           if (
             registeredUsers.includes(localStorage.getItem("uid")) &&
@@ -95,9 +103,6 @@ function setCountdown(eventTiming, eventName) {
         "Winners/Claim Prize";
       document.getElementById(`${eventName}Register`).className =
         "btn btn-info";
-      return true;
-    } else {
-      return false;
     }
   }, 1000);
 }
@@ -225,4 +230,24 @@ function toggleModal(eventName) {
     .catch((error) => {
       console.error(error);
     });
+}
+
+function eventStatus(eventTiming, eventName) {
+  let countDownDate = new Date(eventTiming).getTime();
+
+  let now = new Date().getTime();
+
+  let distance = countDownDate - now;
+
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+ 
+
+  if (distance < 0) {
+    return true;
+  }
+  return false;
 }

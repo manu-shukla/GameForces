@@ -18,11 +18,11 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tourney:wght@800&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Tourney:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="contact.css" />
+    <link rel="stylesheet" href="winners.css" />
 
-    <title>Contact Us: Ashirwad Games</title>
+    <title>My Account: Ashirwad Games</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-2 fs-4">
@@ -42,7 +42,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-3 ml-auto">
             <li class="nav-item px-3">
-              <a class="nav-link" aria-current="page" href="./index.html"
+              <a class="nav-link active" aria-current="page" href="./index.html"
                 >Home</a
               >
             </li>
@@ -53,9 +53,10 @@
               <a class="nav-link" href="./aboutus.html">About Us</a>
             </li>
             <li class="nav-item px-3">
-              <a class="nav-link active" href="#">Contact Us</a>
+              <a class="nav-link" href="./contact.html">Contact Us</a>
             </li>
           </ul>
+
           <button
             type="button"
             id="navbtn"
@@ -67,74 +68,32 @@
         </div>
       </div>
     </nav>
-    <form id="contact" onsubmit="submitForm(); return false">
-      <h1 style="text-align: center">Contact Us</h1>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Your Name</label
-        >
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          placeholder="Name"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Email address</label
-        >
-        <input
-          type="email"
-          class="form-control"
-          id="useremail"
-          placeholder="name@example.com"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
-          >Your Reason to Contact Us</label
-        >
-        <textarea
-          class="form-control"
-          id="message"
-          rows="3"
-          required
-        ></textarea>
-      </div>
-      <button type="submit" class="btn btn-info">Submit</button>
-    </form>
-
-    <!-- Toast CodeBase -->
-
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-      <div
-        id="mytoast"
-        class="toast hide"
-        role="alert"
-        aria-live="assertive"
-        aria-atomic="true"
-      >
-        <div class="toast-header">
-          <i class="fas fa-check-double fa-1x" style="color: green"></i>
-          <strong class="me-auto">Form Submitted Successfully</strong>
-
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="toast"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="toast-body">
-          Thank You for contacting us. We will respond to your queries soon.
-        </div>
-      </div>
+    <div class="loader" id="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-
-    <!-- Toast -->
+    <h1 id="heading">Winners of The Event</h1>
+    <div class="alert alert-primary" role="alert">
+      Prizes will be awarded according to the rules of the event. The prizes will be sent to you shortly. Please be patience!
+    </div>
+    <table
+      id="winners"
+      class="table table-bordered border-success border border-3"
+    >
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Game Handle</th>
+          <th>Event Name</th>
+          <th>Total Kills</th>
+        </tr>
+      </thead>
+      <tbody id="winnerbody"></tbody>
+    </table>
+   
 
     <footer class="footer mt-auto py-3 bg-dark" id="foot">
       <div class="container-fluid">
@@ -167,7 +126,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="contact.js"></script>
-    <script src="auth.js"></script>
+    <script src="winners.js"></script>
   </body>
 </html>

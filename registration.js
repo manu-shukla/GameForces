@@ -70,7 +70,7 @@ fileButton.addEventListener("change", (e) => {
 });
 function register() {
   if (uploader.innerText != "100%") {
-    alert("Reciept Not Uploaded. Kindly Upload it completely");
+    alert("Receipt Not Uploaded. Kindly Upload it completely");
     return;
   }
   let receipturl;
@@ -91,7 +91,7 @@ function register() {
       username: username,
       email: useremail,
       gamehandle: gamename,
-      reciept_url: `https://firebasestorage.googleapis.com/v0/b/gamingportal-ccd0c.appspot.com/o/receipts%2F${localStorage.getItem(
+      receipt_url: `https://firebasestorage.googleapis.com/v0/b/gamingportal-ccd0c.appspot.com/o/receipts%2F${localStorage.getItem(
         "uid"
       )}%2F${timestamp}?alt=media`,
       eventName: eventName,
