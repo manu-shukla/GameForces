@@ -40,7 +40,17 @@ function fetchData(events) {
           }
           setDescription(snapshot.val().description, eventName);
           let registeredUsers = snapshot.val().participants;
-
+          if (eventName != "freefire") {
+            let count = document.getElementById(`${eventName}users`);
+            count.innerText = `${
+              registeredUsers.length - 2
+            }/100 Users Joined`;
+            count.style.fontWeight = "bold";
+          } else {
+            let count = document.getElementById(`${eventName}users`);
+            count.innerText = `${registeredUsers.length - 2}/50 Users Joined`;
+            count.style.fontWeight = "bold";
+          }
           if (
             registeredUsers.length == 102 &&
             eventEnded == false &&
@@ -67,17 +77,7 @@ function fetchData(events) {
             button.innerText = "Already Registered";
             button.style.backgroundColor = "grey";
             button.href = "#";
-            if (eventName != "freefire") {
-              let count = document.getElementById(`${eventName}users`);
-              count.innerText = `${
-                registeredUsers.length - 2
-              }/100 Users Joined`;
-              count.style.fontWeight = "bold";
-            } else {
-              let count = document.getElementById(`${eventName}users`);
-              count.innerText = `${registeredUsers.length - 2}/50 Users Joined`;
-              count.style.fontWeight = "bold";
-            }
+           
             let modalButton = document.getElementById(`${eventName}modal`);
             modalButton.style.display = "";
             modalButton.onclick = function fun() {
