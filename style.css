@@ -6,7 +6,7 @@
   z-index: 2;
 }
 #heading h1 {
-  font-size: 4vw;
+  font-size: 4rem;
   color: white;
   font-weight: bold;
   text-align: center;
@@ -19,6 +19,7 @@
 }
 nav li {
   transition: 0.3s ease-in-out;
+  font-size: 1.8rem;
 }
 nav li:hover {
   transform: scale(1.2);
@@ -35,7 +36,7 @@ nav li:hover {
 .played {
   text-align: center;
   margin: 30px;
-  font-size: 54px;
+  font-size: 4rem;
   font-weight: bold;
   color: white;
 }
