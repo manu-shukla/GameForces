@@ -16,6 +16,7 @@
       integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
       crossorigin="anonymous"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -103,7 +104,6 @@
             class="form-control"
             id="username"
             placeholder="Name"
-          
           />
         </div>
         <div class="mb-3">
@@ -115,7 +115,6 @@
             class="form-control"
             id="useremail"
             placeholder="name@example.com"
-          
           />
         </div>
         <div class="mb-3">
@@ -127,21 +126,29 @@
             class="form-control"
             id="gamename"
             placeholder="username"
-     
           />
         </div>
         <label for="exampleFormControlTextarea1" class="form-label"
           >Have a Referral Code?</label
         >
         <div class="mb-3 d-flex" id="refSection">
-          <input type="text" id="refCode" class="form-control mx-2"
-          style="width: 300px;" placeholder="Referral Code" />
+          <input
+            type="text"
+            id="refCode"
+            class="form-control mx-2"
+            style="width: 300px"
+            placeholder="Referral Code"
+          />
 
-          <button type="button" class="btn btn-dark" id="referral" onclick="setReferral()">
+          <button
+            type="button"
+            class="btn btn-dark"
+            id="referral"
+            onclick="setReferral()"
+          >
             Apply Code
           </button>
         </div>
-      
 
         <button
           type="button"

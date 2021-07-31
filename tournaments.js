@@ -28,8 +28,15 @@ function fetchData(events) {
       .catch((error) => {
         console.error(error);
         if (i == events.length - 1) {
-          alert("Error :( The server did not respond. Click OK to reload.");
-          window.location.reload();
+          Swal.fire({
+            title: "Error!",
+            text: "The Server Did not respond",
+            icon: "error",
+            confirmButtonText: "Reload",
+            allowOutsideClick: false,
+          }).then(function () {
+            window.location.reload();
+          });
         }
       });
   }

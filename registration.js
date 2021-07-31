@@ -7,7 +7,8 @@ if (!localStorage.getItem("uid")) {
   button.onclick = () => window.open("./myaccount.html", "_self");
 }
 var eventPrice = 0;
-
+var referralCode = "";
+var referralCodeApplied = false;
 
 let url_string = document.location.toString();
 let url = new URL(url_string);
@@ -31,15 +32,20 @@ dbRef
   })
   .catch((error) => {
     console.error(error);
-    alert("Error :( The server did not respond. Click OK to reload.");
-    window.location.reload();
+    Swal.fire({
+      title: "Error!",
+      text: "The Server Did not respond",
+      icon: "error",
+      confirmButtonText: "Reload",
+      allowOutsideClick: false,
+    }).then(function () {
+      window.location.reload();
+    });
   });
 
 document.getElementById(
   "eventTitle"
 ).innerText = `Event Name: ${eventName.toUpperCase()}`;
-
-
 
 function setReferral() {
   let code = document.getElementById("refCode").value;
@@ -58,11 +64,33 @@ function setReferral() {
           document.getElementById("eventFee").innerText = `Event Fees: ₹${
             snapshot.val().refFee
           } only`;
+
+          referralCode = snapshot.val().refCode;
+          referralCodeApplied = true;
+          Swal.fire({
+            title: "Referral Code Applied",
+            text: "Referral Code Applied! Check New Event Price",
+            icon: "success",
+            confirmButtonText: "Done",
+            allowOutsideClick: false,
+          });
         } else {
-          alert("The Code entered is either INVALID or EXPIRED");
+          Swal.fire({
+            title: "Alert!",
+            text: "The Code entered is either INVALID or EXPIRED",
+            icon: "info",
+            confirmButtonText: "Retry",
+            allowOutsideClick: false,
+          });
         }
       } else {
-        console.log("Invalid Referral Code");
+        Swal.fire({
+          title: "Alert!",
+          text: "The Code entered is either INVALID or EXPIRED",
+          icon: "info",
+          confirmButtonText: "Retry",
+          allowOutsideClick: false,
+        });
       }
     })
     .catch((error) => {

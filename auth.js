@@ -1,12 +1,10 @@
 if (localStorage.getItem("uid")) {
   let buttons = document.getElementsByClassName("loginbtn");
 
- 
-    buttons[0].innerText = "My Account";
-    buttons[0].onclick = () => window.open("./myaccount.html", "_self");
-    buttons[1].innerText = "Play Now!";
-    buttons[1].onclick = () => window.open("./myaccount.html", "_self");
-  
+  buttons[0].innerText = "My Account";
+  buttons[0].onclick = () => window.open("./myaccount.html", "_self");
+  buttons[1].innerText = "Play Now!";
+  buttons[1].onclick = () => window.open("./myaccount.html", "_self");
 }
 
 function authy() {
@@ -38,18 +36,23 @@ function authy() {
 
       let buttons = document.getElementsByClassName("loginbtn");
 
-   
       buttons[0].innerText = "My Account";
       buttons[0].onclick = () => window.open("./myaccount.html", "_self");
       buttons[1].innerText = "Play Now!";
       buttons[1].onclick = () => window.open("./myaccount.html", "_self");
-      
 
       // ...
     })
     .catch((error) => {
-      alert("Error :( The server did not respond. Click OK to reload.");
-      window.location.reload();
+      Swal.fire({
+        title: "Error!",
+        text: "The Server Did not respond",
+        icon: "error",
+        confirmButtonText: "Reload",
+        allowOutsideClick: false,
+      }).then(function () {
+        window.location.reload();
+      });
     });
 }
 function writeBasicInfo() {
@@ -66,17 +69,16 @@ function writeBasicInfo() {
       } else {
         userExist = false;
         firebase
-        .database()
-        .ref("users/" + localStorage.getItem("uid"))
-        .set({
-          username: localStorage.getItem("username"),
-          email: localStorage.getItem("email"),
-        });
+          .database()
+          .ref("users/" + localStorage.getItem("uid"))
+          .set({
+            username: localStorage.getItem("username"),
+            email: localStorage.getItem("email"),
+          });
         console.log("No data available");
       }
     })
     .catch((error) => {
       console.error(error);
     });
-
 }

@@ -4,12 +4,16 @@ function validateEmail(email) {
   var re = /\S+@\S+\.\S+/;
   return re.test(email);
 }
+console.log(
+  document.getElementById("username").value,
+  document.getElementById("useremail").value
+);
 
 function processPayment() {
   let username = document.getElementById("username").value;
   let useremail = document.getElementById("useremail").value;
   let gamename = document.getElementById("gamename").value;
-  if (validateEmail(useremail) && username != null && gamename != null) {
+  if (validateEmail(useremail) && username != "" && gamename != "") {
     var options = {
       key: "rzp_live_oOCcWqrSW5VfsL", // Enter the Key ID generated from the Dashboard
       amount: eventPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -47,7 +51,13 @@ function processPayment() {
     });
     rzp1.open();
   } else {
-    alert("Something Wrong!");
+    Swal.fire({
+      title: "Check Input Fields",
+      text: "Some of the input field(s) are incorrectly typed!",
+      icon: "question",
+      confirmButtonText: "Enter Again",
+      allowOutsideClick: false,
+    });
   }
 }
 function failedPayment() {
@@ -67,11 +77,15 @@ function failedPayment() {
       status: "FAILED",
     });
 
-  alert(
-    `Sorry Your Payment Failed! If any Amount is deducted then it will be refunded to you. Please note your Order ID for future reference. OrderID : ${timestamp}`
-  );
-
-  window.location.href = "./myaccount.html";
+  Swal.fire({
+    title: "Payment Failure",
+    html: `Sorry Your Payment Failed! If any Amount is deducted then it will be refunded to you.<br><br> OrderID : ${timestamp}<br><br> Please note your Order ID for future reference.`,
+    icon: "error",
+    confirmButtonText: "Go Back",
+    allowOutsideClick: false,
+  }).then(function () {
+    window.location.href = "./myaccount.html";
+  });
 }
 
 function finalizePayment(response) {
@@ -100,7 +114,6 @@ function finalizePayment(response) {
     .get()
     .then((snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
         let participantsList = snapshot.val();
         participantsList.push(userID);
         setData(participantsList, eventName);
@@ -122,6 +135,49 @@ function setData(participantsList, eventName) {
   return;
 }
 function redirectUser() {
-  alert("Payment Successful!");
-  window.location.href = "./myaccount.html";
+  if (referralCodeApplied) {
+    firebase
+      .database()
+      .ref()
+      .child(`referrals/${referralCode}`)
+      .get()
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          let updates = { count: snapshot.val().count + 1 };
+          firebase
+            .database()
+            .ref(`referrals/${referralCode}`)
+            .update(updates, (error) => {
+              if (error) {
+                console.log(error);
+              } else {
+              }
+            });
+        } else {
+          let updates = { count: 1 };
+          firebase
+            .database()
+            .ref(`referrals/${referralCode}`)
+            .update(updates, (error) => {
+              if (error) {
+                console.log(error);
+              } else {
+              }
+            });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  Swal.fire({
+    title: "Payment Successful",
+    text: "Payment Done Successfully!",
+    icon: "success",
+    confirmButtonText: "Done",
+    allowOutsideClick: false,
+  }).then(function () {
+    window.location.href = "./myaccount.html";
+  });
 }

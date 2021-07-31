@@ -42,9 +42,7 @@ function fetchData(events) {
           let registeredUsers = snapshot.val().participants;
           if (eventName != "freefire") {
             let count = document.getElementById(`${eventName}users`);
-            count.innerText = `${
-              registeredUsers.length - 2
-            }/100 Users Joined`;
+            count.innerText = `${registeredUsers.length - 2}/100 Users Joined`;
             count.style.fontWeight = "bold";
           } else {
             let count = document.getElementById(`${eventName}users`);
@@ -77,7 +75,7 @@ function fetchData(events) {
             button.innerText = "Already Registered";
             button.style.backgroundColor = "grey";
             button.href = "#";
-           
+
             let modalButton = document.getElementById(`${eventName}modal`);
             modalButton.style.display = "";
             modalButton.onclick = function fun() {
@@ -94,8 +92,15 @@ function fetchData(events) {
       .catch((error) => {
         console.error(error);
         if (i == events.length - 1) {
-          alert("Error :( The server did not respond. Click OK to reload.");
-          window.location.reload();
+          Swal.fire({
+            title: "Error!",
+            text: "The Server Did not respond",
+            icon: "error",
+            confirmButtonText: "Reload",
+            allowOutsideClick: false,
+          }).then(function () {
+            window.location.reload();
+          });
         }
       });
   }
@@ -183,7 +188,7 @@ function viewOrders(myorders) {
     let orderdate = document.createElement("td");
     let eventname = document.createElement("td");
     let status = document.createElement("td");
-   
+
     row.className = "table-success";
 
     // For Order ID
@@ -205,8 +210,6 @@ function viewOrders(myorders) {
 
     status.innerText = entries[i][1].status;
     row.appendChild(status);
-
-    
 
     // Final Appending to Table
 
@@ -241,7 +244,14 @@ function toggleModal(eventName) {
         myModal.toggle();
       } else {
         console.log("No data available");
-        alert("Unable To Fetch Joining Details. Please Try Again Later!");
+
+        Swal.fire({
+          title: "Error!",
+          text: "Unable To Fetch Joining Details. Please Try Again Later!",
+          icon: "error",
+          confirmButtonText: "OK",
+          allowOutsideClick: false,
+        });
       }
     })
     .catch((error) => {
