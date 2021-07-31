@@ -93,7 +93,7 @@
         style="text-align: center; border: 2px solid black"
       ></h1>
       <h1 id="eventFee" style="text-align: center; color: white"></h1>
-      <form id="contact" onsubmit="register(); return false;">
+      <form id="contact">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label"
             >Your Name</label
@@ -103,7 +103,7 @@
             class="form-control"
             id="username"
             placeholder="Name"
-            required
+          
           />
         </div>
         <div class="mb-3">
@@ -115,7 +115,7 @@
             class="form-control"
             id="useremail"
             placeholder="name@example.com"
-            required
+          
           />
         </div>
         <div class="mb-3">
@@ -127,55 +127,30 @@
             class="form-control"
             id="gamename"
             placeholder="username"
-            required
+     
           />
         </div>
-        <div
-          class="
-            container
-            d-flex
-            flex-column
-            justify-content-center
-            align-items-center
-          "
+        <label for="exampleFormControlTextarea1" class="form-label"
+          >Have a Referral Code?</label
         >
-          <img src="qr.jpeg" class="img-thumbnail my-3" alt="qrcode" />
-          <h5 class="mx-2" style="color: black">
-            Scan this QR code from any UPI app to pay the amount of the event or
-            Pay to the UPI ID : ashirwadgames@axl
-          </h5>
-        </div>
+        <div class="mb-3 d-flex" id="refSection">
+          <input type="text" id="refCode" class="form-control mx-2"
+          style="width: 300px;" placeholder="Referral Code" />
 
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="uploaded"
-            >Upload the Receipt</label
-          >
-          <input type="file" class="form-control" id="uploaded" />
+          <button type="button" class="btn btn-dark" id="referral" onclick="setReferral()">
+            Apply Code
+          </button>
         </div>
-        <div id="spinner">
-          <h6>Uploading. Please Wait!</h6>
-          <div class="spinner-border text-info" role="status"></div>
-        </div>
-        <div class="progress">
-          <div
-            class="progress-bar"
-            id="progress"
-            role="progressbar"
-            style="width: 0%"
-            aria-valuenow="50"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            0%
-          </div>
-        </div>
+      
+
         <button
-          type="submit"
+          type="button"
           id="registerbtn"
           class="btn btn-info"
           style="margin: 20px"
+          onclick="processPayment()"
         >
-          Submit
+          Pay Now
         </button>
       </form>
     </div>
@@ -273,6 +248,8 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="registration.js"></script>
+    <script src="payments.js"></script>
   </body>
 </html>

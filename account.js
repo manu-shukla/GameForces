@@ -173,7 +173,6 @@ function viewOrders(myorders) {
 <th>Order Date</th>
 <th>Event Name</th>
 <th>Status</th>
-<th>Receipts</th>
 </tr>`;
 
   const entries = Object.entries(myorders);
@@ -184,7 +183,7 @@ function viewOrders(myorders) {
     let orderdate = document.createElement("td");
     let eventname = document.createElement("td");
     let status = document.createElement("td");
-    let receipturl = document.createElement("button");
+   
     row.className = "table-success";
 
     // For Order ID
@@ -207,16 +206,7 @@ function viewOrders(myorders) {
     status.innerText = entries[i][1].status;
     row.appendChild(status);
 
-    // For receipts
-
-    receipturl.innerText = "Download Now";
-    receipturl.onclick = function () {
-      window.open(`${entries[i][1].receipt_url}`, "_blank");
-    };
-    receipturl.className = "btn btn-primary";
-    let receiptdata = document.createElement("td");
-    receiptdata.append(receipturl);
-    row.appendChild(receiptdata);
+    
 
     // Final Appending to Table
 
