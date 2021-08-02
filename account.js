@@ -7,14 +7,37 @@ if (!localStorage.getItem("uid")) {
   button.onclick = () => window.open("./myaccount.html", "_self");
 }
 function logout() {
-  let confirmation = confirm("Are you Sure You Want to Logout?");
-  if (confirmation) {
-    localStorage.removeItem("uid");
-    localStorage.removeItem("username");
-    localStorage.removeItem("email");
-    window.open("./index.html", "_self");
-    return;
-  }
+  Swal.fire({
+    title: "Are you sure want to logout?",
+    text: "You will be logged out from current device!",
+    icon: "warning",
+    allowOutsideClick: false,
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Log Me Out",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Logging you out. Please Wait",
+        text: "Comeback again for exciting tournaments and prizes!",
+        timer: 6000,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      }).then((result) => {
+        if (result.dismiss === Swal.DismissReason.timer) {
+          localStorage.removeItem("uid");
+          localStorage.removeItem("username");
+          localStorage.removeItem("email");
+          window.open("./index.html", "_self");
+        }
+      });
+    }
+  });
 }
 
 document.getElementById(

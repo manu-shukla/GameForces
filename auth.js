@@ -28,6 +28,22 @@ function authy() {
           uid = user.uid;
           localStorage.setItem("username", user.displayName);
           localStorage.setItem("email", user.email);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", Swal.stopTimer);
+              toast.addEventListener("mouseleave", Swal.resumeTimer);
+            },
+          });
+
+          Toast.fire({
+            icon: "success",
+            title: "Logged in successfully",
+          });
           writeBasicInfo();
         } else {
           // User not logged in or has just logged out.
