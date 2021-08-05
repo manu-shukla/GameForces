@@ -73,6 +73,19 @@ function fetchData(events) {
             count.style.fontWeight = "bold";
           }
           if (
+            registeredUsers.includes(localStorage.getItem("uid")) &&
+            eventEnded == false
+          ) {
+            let button = document.getElementById(`${eventName}Register`);
+            button.innerText = "Already Registered";
+            button.style.backgroundColor = "grey";
+            button.href = "javascript: void(0)";
+            let modalButton = document.getElementById(`${eventName}modal`);
+            modalButton.style.display = "";
+            modalButton.onclick = function fun() {
+              toggleModal(`${eventName}`);
+            };
+          } else if (
             registeredUsers.length == 102 &&
             eventEnded == false &&
             eventName != "freefire"
@@ -90,20 +103,6 @@ function fetchData(events) {
             button.innerText = "Sorry Room Capacity Exceeded!";
             button.style.backgroundColor = "grey";
             button.href = "#";
-          } else if (
-            registeredUsers.includes(localStorage.getItem("uid")) &&
-            eventEnded == false
-          ) {
-            let button = document.getElementById(`${eventName}Register`);
-            button.innerText = "Already Registered";
-            button.style.backgroundColor = "grey";
-            button.href = "#";
-
-            let modalButton = document.getElementById(`${eventName}modal`);
-            modalButton.style.display = "";
-            modalButton.onclick = function fun() {
-              toggleModal(`${eventName}`);
-            };
           }
           if (i == events.length - 1) {
             document.getElementById("loader").style.display = "none";
@@ -167,22 +166,6 @@ function setDescription(description, eventName) {
 
 window.onload = fetchData(["codm", "pubg", "freefire"]);
 function fetchMyOrders() {
-  // const dbRef = firebase.database().ref();
-  // dbRef
-  //   .child(`users/${localStorage.getItem("uid")}/myorders`)
-  //   .get()
-  //   .then((snapshot) => {
-  //     if (snapshot.exists()) {
-  //       console.log(snapshot.val());
-  //       viewOrders(snapshot.val());
-  //     } else {
-  //       console.log("No data available");
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //   });
-
   // New Code
   let myOrders = firebase
     .database()
