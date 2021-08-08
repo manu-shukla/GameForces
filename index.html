@@ -18,19 +18,12 @@
   <link rel="manifest" href="manifest.json">
 
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background: rgb(222, 13, 161);
-      background: linear-gradient(90deg, rgba(222, 13, 161, 1) 2%, rgba(100, 87, 241, 1) 52%, rgba(250, 58, 116, 1) 92%);
-
-
-    }
-  </style>
+ 
 
   <title>Ashirwad Games</title>
 </head>
 
-<body>
+<body class="bg-dark bg-gradient">
   <div id="mainload" style="background-image: url('./mainloading.gif');
     height: 100vh;
     width: 100%;
@@ -160,13 +153,14 @@
   </section>
 
 
+  
   <div class="row py-5 my-5 container-fluid">
     <div class="col-md-6">
       <img src="./game.png" alt="play" class=" w-100 rounded">
     </div>
     <div class=" desc col-md-6">
       <h1 class=" feature-heading my-3" style="color: white;">PLAY AND EARN</h1>
-      <p class=" feature-desc">Play competitive tournaments and win amazing cash prizes instantly! Join any of the
+      <p class=" feature-desc" style="color: white;">Play competitive tournaments and win amazing cash prizes instantly! Join any of the
         multiple tournaments happening every hour, every day. Get exciing prizes for per kills or winning the tournament
         so that to ensure you higher chances of your wins.</p>
       <div class="">
@@ -183,8 +177,13 @@
 
 
 
-  <div class="sectionlogin">
-    <h1 class="played">What are you waiting for?</h1>
+
+
+
+
+  <div class="sectionlogin container-fluid" id="waiting">
+<img src="./waiting.png" class="img-fluid" alt="">
+  
     <button class="loginbtn" onclick="authy()">Login Now</button>
   </div>
 
