@@ -83,13 +83,11 @@ nav li:hover {
 }
 
 .sectionlogin button {
-
-
   margin-top: 15px;
   margin-bottom: 50px;
   padding: 15px 20px;
   color: white;
- 
+
   width: 80vw;
   background-color: black;
   font-size: 24px;
