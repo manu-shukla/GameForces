@@ -57,7 +57,7 @@ function setReferral() {
     .get()
     .then((snapshot) => {
       if (snapshot.exists()) {
-        if (snapshot.val().refCode == code) {
+        if (snapshot.val().refCode == code && code != "") {
           let refSection = document.getElementById("refSection");
           refSection.innerHTML = `<h5 style="color: purple;"><span style ="color: green">Referral Code Applied!</span> Check New Event Price</h5>`;
           eventPrice = snapshot.val().refFee;
