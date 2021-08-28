@@ -13,7 +13,16 @@ function processPayment() {
   let username = document.getElementById("username").value;
   let useremail = document.getElementById("useremail").value;
   let gamename = document.getElementById("gamename").value;
-  if (validateEmail(useremail) && username != "" && gamename != "") {
+  let phone = document.getElementById("phone").value;
+  let upi = document.getElementById("upi").value;
+  if (
+    validateEmail(useremail) &&
+    username != "" &&
+    gamename != "" &&
+    phone != "" &&
+    upi != "" &&
+    phone.length == 10
+  ) {
     var options = {
       key: "rzp_live_oOCcWqrSW5VfsL", // Enter the Key ID generated from the Dashboard
       amount: eventPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -28,13 +37,15 @@ function processPayment() {
       prefill: {
         name: username,
         email: useremail,
-        contact: "9999999999",
+        contact: phone,
       },
       notes: {
         orderID: timestamp,
         username: username,
         useremail: useremail,
         gamehandle: gamename,
+        phoneno: phone,
+        upiID: upi,
       },
       theme: {
         color: "#800080",
