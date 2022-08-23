@@ -24,7 +24,7 @@ function processPayment() {
     phone.length == 10
   ) {
     var options = {
-      key: "rzp_live_14TzShVt36cRV1", // Enter the Key ID generated from the Dashboard
+      key: "rzp_test_UA3qfWSZS1g6oE", // Enter the Key ID generated from the Dashboard
       amount: eventPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "GameForces",
